@@ -15,6 +15,7 @@ county:默认地区（县）
             prov:null,
             city:null,
             county:null,
+            defaultName:['province','city','county'],
             defaultText:['请选择','请选择','请选择']
         },settings);
         if(!(settings.areaData || settings.url)){
@@ -46,9 +47,9 @@ county:默认地区（县）
             if(!self.areaData){
                 throw new Error("缺少数据源");
             }
-            var template=['<select class="J_select_prov"></select>',
-                '<select class="J_select_city"></select>',
-                '<select class="J_select_county"></select>'].join('');
+            var template=['<select class="J_select_prov" name="'+ self.settings.defaultName[0]+'"></select>',
+                '<select class="J_select_city" name="'+ self.settings.defaultName[1]+'"></select>',
+                '<select class="J_select_county"  name="'+ self.settings.defaultName[2]+'"></select>'].join('');
             self.container.html(template);
             self.initProv();
             self.bindEvent();
